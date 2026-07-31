@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quest - สู่อาชีพและการเงิน</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <button id="btn-lang-th" class="lang-btn" onclick="changeLanguage('th')">🇹🇭 TH</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="changeLanguage('en')">🇬🇧 EN</button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="panel card-popup" style="max-width: 450px; width: 100%; text-align: center;">
+        <h1 style="font-size: 32px; margin-bottom: 5px;">🎮 Career Quest</h1>
+        <p style="color: #cbd5e1; margin-bottom: 25px;">เท่ได้...ใช้เงินเป็น (Educational Board Game)</p>
+
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="room.html" class="btn" data-lang="createRoom" style="text-decoration: none; text-align: center;">สร้างห้อง</a>
+            <a href="room.html" class="btn" data-lang="joinRoom" style="background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%); box-shadow: 0 6px 0 #1e40af; text-decoration: none; text-align: center;">เข้าร่วมห้อง</a>
+        </div>
+    </div>
+
+    <script src="js/language-system.js"></script>
+</body>
+</html>

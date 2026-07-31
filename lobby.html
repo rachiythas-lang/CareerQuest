@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby - Career Quest</title>
+    
+    <!-- ดึงฟอนต์ประจำแบรนด์ของเกม -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- เชื่อมโยงสไตล์หลัก -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* สไตล์เสริมระดับพรีเมียมสำหรับจัดหน้ารายชื่อในห้อง Lobby */
+        .room-code-box {
+            background: #2e7d32;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin: 15px auto;
+        }
+        .player-list {
+            width: 100%;
+            max-width: 340px;
+            margin: 25px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .player-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 12px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-ready {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .status-waiting {
+            color: #f59f00;
+            font-weight: bold;
+        }
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 2px solid #a5d6a7;
+            border-radius: 12px;
+            margin: 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- พื้นหลังเมฆและเหรียญทองลอยนุ่มนวล -->
+    <div class="background">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="coin coin1">🪙</div>
+        <div class="coin coin2">🪙</div>
+        <div class="coin coin3">🪙</div>
+    </div>
+
+    <!-- กล่องกระจกแก้วดีไซน์หลักของเกม -->
+    <div class="container glass">
+        <div class="logo" style="font-size: 42px;">Career Quest Room</div>
+        <div class="subtitle" style="font-size: 16px;">สแกนคิวอาร์โค้ดหรือกรอกรหัสเพื่อเข้าห้อง</div>
+
+        <!-- ชื่องานที่ 2: รหัสห้อง (Room Code) และ ชื่องานที่ 1: QR Code จำลอง -->
+        <div class="room-code-box">AB29XZ</div>
+        <div class="qr-placeholder" title="QR Code เข้าห้องจำลอง">📷</div>
+
+        <!-- ชื่องานที่ 3: รายชื่อผู้เล่น 3-5 คน และ ชื่องานที่ 4: Avatar กับ Status ความพร้อม -->
+        <div class="player-list">
+            <div class="player-row">
+                <div class="player-info">🤖 <span>James (Host)</span></div>
+                <div class="status-ready">✅ Ready</div>
+            </div>
+            <div class="player-row">
+                <div class="player-info">🦊 <span>Player 2</span></div>
+                <div class="status-ready">✅ Ready</div>
+            </div>
+            <div class="player-row">
+                <div class="player-info">🐹 <span>Player 3</span></div>
+                <div class="status-waiting">⏳ Waiting...</div>
+            </div>
+        </div>
+
+        <!-- ชื่องานที่ 5: ปุ่มสั่งเปิดเกมจริงสำหรับโฮสต์ (เมื่อกดปุ่มนี้ ระบบจะพาเข้าสู่หน้า game.html ทันที) -->
+        <button class="btn" style="margin-top: 10px;" onclick="location.href='game.html'">
+            🚀 Start Game
+        </button>
+    </div>
+
+</body>
+</html>

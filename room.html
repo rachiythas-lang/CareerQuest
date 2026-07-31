@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quest - Lobby</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <button id="btn-lang-th" class="lang-btn" onclick="changeLanguage('th')">🇹🇭 TH</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="changeLanguage('en')">🇬🇧 EN</button>
+    </div>
+
+    <!-- Room Setup / Lobby Panel -->
+    <div class="panel card-popup" style="max-width: 500px; width: 100%; text-align: center;">
+        <h2 style="margin-bottom: 20px;">🏰 Game Lobby</h2>
+
+        <div style="text-align: left; margin-bottom: 15px;">
+            <label style="font-size: 14px; color: #cbd5e1;">ชื่อผู้เล่น / Player Name:</label>
+            <input type="text" id="username" value="Player 1" style="width: 100%; padding: 10px; border-radius: 10px; border: none; margin-top: 5px; font-size: 16px;">
+        </div>
+
+        <div style="text-align: left; margin-bottom: 20px;">
+            <label style="font-size: 14px; color: #cbd5e1;">รหัสห้อง / Room Code:</label>
+            <input type="text" id="roomCode" value="CQ2026" style="width: 100%; padding: 10px; border-radius: 10px; border: none; margin-top: 5px; font-size: 16px;">
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <button class="btn" style="flex: 1;" onclick="joinAndStart()" data-lang="startGame">เริ่มเกม</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/language-system.js"></script>
+    <script>
+        function joinAndStart() {
+            const name = document.getElementById("username").value;
+            const code = document.getElementById("roomCode").value;
+            localStorage.setItem("username", name);
+            localStorage.setItem("roomCode", code);
+            window.location.href = "game.html";
+        }
+    </script>
+</body>
+</html>

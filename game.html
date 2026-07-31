@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quest - Board Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <button id="btn-lang-th" class="lang-btn" onclick="changeLanguage('th')">🇹🇭 TH</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="changeLanguage('en')">🇬🇧 EN</button>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Header & Dice Area -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h1 style="font-size: 36px; margin-bottom: 5px;">🎲🏙️ Career Quest</h1>
+            <p style="color: #cbd5e1; font-size: 18px; margin: 0;">เท่ได้...ใช้เงินเป็น (Educational Board Game)</p>
+            
+            <div style="margin-top: 15px;">
+                <div id="dice">🎲</div>
+                <br>
+                <button id="dice-btn" class="btn" onclick="rollDice()" style="background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%); box-shadow: 0 6px 0 #991b1b;" data-lang="rollDice">
+                    🎲 ทอยลูกเต๋า
+                </button>
+            </div>
+            <p id="turn-status" style="font-weight: bold; color: #fde047; margin-top: 10px; font-size: 18px;" data-lang="yourTurn">🎯 ถึงตาของคุณแล้ว! กด Roll Dice ได้เลย</p>
+        </div>
+
+        <!-- Board Area -->
+        <div class="board-container">
+            <div id="board"></div>
+        </div>
+
+        <!-- Player Dashboard / Status Panels -->
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px;">
+            
+            <!-- Skill Panel -->
+            <div class="panel" style="flex: 1; min-width: 250px;">
+                <h3 style="color: #818cf8; margin-top: 0;">📚 <span data-lang="skill">ทักษะ</span> & Level</h3>
+                <p>⭐ Level: <span id="level" style="color: #f43f5e; font-size: 22px; font-weight: 800;">1</span></p>
+                <hr style="border-color: rgba(255,255,255,0.1);">
+                <p>💻 Coding: <span id="coding">20</span></p>
+                <p>📊 Accounting: <span id="accounting">20</span></p>
+                <p>📢 Marketing: <span id="marketing">20</span></p>
+            </div>
+
+            <!-- Life Quality Panel -->
+            <div class="panel" style="flex: 1; min-width: 250px;">
+                <h3 style="color: #4ade80; margin-top: 0;">❤️ Life Quality</h3>
+                <hr style="border-color: rgba(255,255,255,0.1);">
+                <p><span data-lang="health">❤️ สุขภาพ</span>: <span id="health" style="color: #4ade80;">80</span></p>
+                <p><span data-lang="stress">😰 ความเครียด</span>: <span id="stress" style="color: #f87171;">20</span></p>
+                <p><span data-lang="happiness">😊 ความสุข</span>: <span id="happiness" style="color: #facc15;">70</span></p>
+                <p><span data-lang="energy">⚡ พลังงาน</span>: <span id="energy" style="color: #38bdf8;">80</span></p>
+            </div>
+
+            <!-- Financial Panel -->
+            <div class="panel" style="flex: 1; min-width: 250px;">
+                <h3 style="color: #facc15; margin-top: 0;">💰 Financial Center</h3>
+                <hr style="border-color: rgba(255,255,255,0.1);">
+                <p><span data-lang="cash">💵 เงินสด</span>: <span id="cash" style="color: #4ade80; font-size: 18px;">5,000</span> THB</p>
+                <p><span data-lang="saving">🏦 เงินออม</span>: <span id="saving" style="color: #38bdf8;">0</span> THB</p>
+                <p><span data-lang="investment">📈 การลงทุน</span>: <span id="investment" style="color: #facc15;">0</span> THB</p>
+                <div style="margin-top: 15px;">
+                    <button class="btn-sm" onclick="depositMoney(1000)" style="font-size: 12px; padding: 6px 10px;" data-lang="deposit">🏦 ฝาก 1k</button>
+                    <button class="btn-sm" onclick="invest('stock')" style="font-size: 12px; padding: 6px 10px; background: linear-gradient(180deg, #f59e0b, #d97706);" data-lang="stock">📈 หุ้น</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script Imports -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let player = {
+            name: localStorage.getItem("username") || "Player",
+            career: "Programmer",
+            money: 5000,
+            salary: 15000
+        };
+    </script>
+    <script src="js/language-system.js"></script>
+    <script src="js/skill-system.js"></script>
+    <script src="js/life-system.js"></script>
+    <script src="js/investment-system.js"></script>
+    <script src="js/score-system.js"></script>
+    <script src="js/card-system.js"></script>
+    <script src="js/board-system.js"></script>
+    <script src="js/dice-system.js"></script>
+
+    <script>
+        window.onload = function() {
+            const boardElement = document.getElementById("board");
+            board.forEach(tile => {
+                let div = document.createElement("div");
+                div.className = "tile";
+                div.id = "tile-" + tile.id;
+                div.setAttribute("data-type", tile.type);
+                div.innerHTML = `<span style="font-size:10px; opacity:0.6;">#${tile.id}</span><div>${tile.name}</div>`;
+                boardElement.appendChild(div);
+            });
+
+            // Avatar
+            let avatar = document.createElement("div");
+            avatar.id = "avatar";
+            avatar.innerHTML = "🧑‍💻";
+            document.getElementById("tile-0").appendChild(avatar);
+
+            if (typeof updateSkillUI === "function") updateSkillUI();
+            if (typeof updateLifeUI === "function") updateLifeUI();
+            if (typeof updateFinanceUI === "function") updateFinanceUI();
+        };
+    </script>
+</body>
+</html>

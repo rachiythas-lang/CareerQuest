@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Room - Career Quest</title>
+    
+    <!-- ดึงฟอนต์ประจำดีไซน์ซิสเต็มของเกม -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- เชื่อมโยงสไตล์หลัก -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- แบ็คกราวด์ระบบเมืองพาสเทล เมฆลอย และเหรียญขยับได้ -->
+    <div class="background">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="coin coin1">🪙</div>
+        <div class="coin coin2">🪙</div>
+        <div class="coin coin3">🪙</div>
+    </div>
+
+    <!-- หน้าจอฟอร์มหลักสไตล์กระจกใส (Glassmorphism) -->
+    <div class="container glass">
+        <div class="logo" style="font-size: 46px; margin-bottom: 5px;">👥 Join Room</div>
+        <div class="subtitle" style="margin-bottom: 30px; font-size: 18px; color: #555;">เข้าสู่ห้องเกม Career Quest</div>
+
+        <!-- ช่องกรอกข้อมูลที่ผูกคลาสตกแต่งสวยงาม -->
+        <input type="text" placeholder="Room Code เช่น AB29XZ"><br><br>
+        <input type="text" placeholder="Username"><br><br>
+
+        <!-- ตรงนี้แหละครับ! พอกดปุ่ม Join Game ระบบจะพาเด้งวาร์ปไปหน้าห้องพักรอ room.html ทันทีอย่างถูกต้องตามแผนแผนงานใหม่ครับ -->
+        <button class="btn" onclick="location.href='room.html'">
+            Join Game
+        </button>
+    </div>
+
+</body>
+</html>

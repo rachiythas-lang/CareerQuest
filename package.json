@@ -1,0 +1,25 @@
+{
+  "name": "careerquest",
+  "version": "1.0.0",
+  "description": "Career Quest: สู่อาชีพและการเงิน Multiplayer Board Game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "board-game",
+    "multiplayer",
+    "socket.io",
+    "education"
+  ],
+  "author": "James",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.3",
+    "sqlite3": "^6.0.1"
+  }
+}

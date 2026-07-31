@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Career Quest</title>
+    <!-- ใช้สไตล์สไตล์กระจกสวยๆ ร่วมกับหน้าแรกได้เลย -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* เพิ่มสไตล์สำหรับกล่องกรอกข้อความให้เข้ากับดีไซน์เกม */
+        input {
+            width: 280px;
+            padding: 12px;
+            margin: 8px auto;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+        }
+        input:focus {
+            border-color: #2e7d32;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .link-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+        .link-text a {
+            color: #1b5e20;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ดึงพื้นหลังเมฆและเหรียญทองมาใช้ด้วยเพื่อความต่อเนื่อง -->
+    <div class="background">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="coin coin1">🪙</div>
+        <div class="coin coin2">🪙</div>
+        <div class="coin coin3">🪙</div>
+    </div>
+
+    <div class="container">
+        <div class="logo" style="font-size: 48px;">Login</div>
+        <div class="subtitle" style="margin-bottom: 25px;">เข้าสู่ระบบเพื่อเริ่มเล่นเกม</div>
+        
+        <input type="text" placeholder="Username"><br>
+        <input type="password" placeholder="Password"><br>
+        
+        <button class="btn" onclick="location.href='lobby.html'">Login</button>
+        
+        <div class="link-text">
+            ยังไม่มีบัญชีผู้เล่น? <a href="register.html">สมัครสมาชิกที่นี่</a>
+        </div>
+    </div>
+
+</body>
+</html>

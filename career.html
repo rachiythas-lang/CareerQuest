@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Career - Career Quest</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="career-container">
+    <h1 class="logo" style="font-size: 44px; color: #1b5e20;">🏆 Choose Your Career</h1>
+    <p class="subtitle" style="font-size: 18px; margin-bottom: 30px;">เลือกเส้นทางอาชีพของคุณ</p>
+
+    <div class="career-grid">
+        <div class="career-card" onclick="selectCareer(this,'Chef',3000,'Cooking')">
+            <h2 style="font-size: 45px;">👨‍🍳</h2>
+            <h3>Chef</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 3000 / รอบ</p>
+            <p>Skill: Cooking</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Programmer',5000,'Coding')">
+            <h2 style="font-size: 45px;">💻</h2>
+            <h3>Programmer</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 5000 / รอบ</p>
+            <p>Skill: Coding</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Teacher',3500,'Communication')">
+            <h2 style="font-size: 45px;">👩‍🏫</h2>
+            <h3>Teacher</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 3500 / รอบ</p>
+            <p>Skill: Communication</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Farmer',2500,'Saving')">
+            <h2 style="font-size: 45px;">🌾</h2>
+            <h3>Farmer</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 2500 / รอบ</p>
+            <p>Skill: Saving</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Electrician',4000,'Technical')">
+            <h2 style="font-size: 45px;">⚡</h2>
+            <h3>Electrician</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 4000 / รอบ</p>
+            <p>Skill: Technical</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Graphic Designer',4000,'Design')">
+            <h2 style="font-size: 45px;">🎨</h2>
+            <h3>Graphic Designer</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 4000 / รอบ</p>
+            <p>Skill: Design</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Nurse',4500,'Health')">
+            <h2 style="font-size: 45px;">🏥</h2>
+            <h3>Nurse</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 4500 / รอบ</p>
+            <p>Skill: Health</p>
+        </div>
+
+        <div class="career-card" onclick="selectCareer(this,'Photographer',3500,'Creativity')">
+            <h2 style="font-size: 45px;">📷</h2>
+            <h3>Photographer</h3>
+            <p style="color: #2e7d32; font-weight: 500; margin: 5px 0;">💰 3500 / รอบ</p>
+            <p>Skill: Creativity</p>
+        </div>
+    </div>
+
+    <button class="btn" onclick="confirmCareer()">✅ Confirm Career</button>
+</div>
+
+<script>
+    let selectedCareer = null;
+
+    function selectCareer(card, name, salary, skill) {
+        document.querySelectorAll(".career-card").forEach(c => {
+            c.classList.remove("selected");
+        });
+        card.classList.add("selected");
+        selectedCareer = { name: name, salary: salary, skill: skill };
+    }
+
+    function confirmCareer() {
+        if (!selectedCareer) {
+            alert("กรุณาเลือกอาชีพก่อนเปิดศึกครับ!");
+            return;
+        }
+        // จัดเก็บลงหน่วยความจำ LocalStorage ตามเงื่อนไขของบริษัทเกมจริง
+        localStorage.setItem("career", JSON.stringify(selectedCareer));
+        location.href = "game.html";
+    }
+</script>
+
+</body>
+</html>
